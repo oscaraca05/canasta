@@ -1,0 +1,125 @@
+<!doctype html>
+<html ng-app="canastaApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+    <!--script src="/libs/angularjs/angular.min.js"></script-->
+    
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+    <!--link rel="stylesheet" type="text/css" href="/libs/node_modules/angularjs-slider/dist/rzslider.css"/--> 
+    <script src="/libs/angularjs/angular-route.min.js"></script>
+    <!--script src="/libs/node_modules/angularjs-slider/dist/rzslider.min.js"></script-->
+
+    <script src="/js/app.js"></script>
+    <link rel="stylesheet" href="/css/canasta.css">
+  </head>
+  <body ng-controller="MainController" ng-cloak>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-2"><img src="img/logo-nutresa.png"></div>
+        <div class="col-sm-5 col-sm-offset-1" style="margin-top:15px;">
+          <span>NIT</span>
+          <select ng-options="nit.text for nit in nits track by nit.id" ng-model="nitSeleccionado" ng-change="prueba()">
+          </select>
+          <span>Mes</span>
+          <select ng-options="mes.text for mes in meses track by mes.id" ng-model="mesSeleccionado" ng-change="prueba()">
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <div class="col-xs-8 col-sm-4">
+            <button type="button" class="btn btn-default btn-md" ng-click="pruebaHttp()" style="padding:4px; margin-top:8px;" title="Test R">
+              <img src="img/r_logo.png" style="width:40px; height:auto;">
+            </button>
+          </div>
+          <div class="col-xs-4 col-sm-8 text-right">
+            <span>Región Bogotá</span></br>
+            <span>{{nitSeleccionado.text}} - {{mesSeleccionado.text}}</span></br>
+            <span>Portafolio Seco</span></br>
+            <span>Periodo 2015/07 - 2016/06</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="row text-center">
+            <strong><span class="titulo-imagen">Composicion Canasta</span></strong>
+          </div>
+          <div class="row">
+            <img src="img/pieanddonut.png" class="img-responsive" alt="Composición Canasta">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="row text-center">
+            <strong><span class="titulo-imagen">Ranking Inverso</span></strong>
+          </div>
+          <div class="row">
+            <div class="col-xs-10">
+              <img src="img/rankinginverso.png" class="img-responsive" alt="Ranking inverso">
+            </div>
+            <md-slider-container flex class="col-xs-2">
+              <md-input-container>
+                <input flex type="number" ng-model="rankInvSlider" aria-label="ranking" aria-controls="ranking-slider">
+              </md-input-container>
+              <md-slider ng-model="rankInvSlider" min="0" max="100" aria-label="ranking" id="ranking-slider" class="md-accent" md-vertical
+                         md-range></md-slider>
+              </md-slider>
+              <h5>Ranking</h5>
+              <h5>Corte</h5>
+            </md-slider-container>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="row text-center">
+            <strong><span class="titulo-imagen">Multidimensional Scaling</span></strong>
+          </div>
+          <div class="row">
+            <img src="img/cmds.png" class="img-responsive" alt="Classical multidimensional scaling">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="row text-center">
+            <strong><span class="titulo-imagen">Fuerza de Impulso</span></strong>
+          </div>
+          <div class="row">
+            <div class="col-xs-10">
+              <img src="img/impulso.png" class="img-responsive" alt="Impulso">
+            </div>
+            <md-slider-container flex class="col-xs-2">
+              <md-input-container>
+                <input flex type="number" ng-model="impulsoSlider" aria-label="impulso" aria-controls="impulso-slider">
+              </md-input-container>
+              <md-slider ng-model="impulsoSlider" min="0" max="100" aria-label="impulso" id="impulso-slider" class="md-accent" md-vertical
+                         md-range></md-slider>
+              </md-slider>
+              <h5>Impulso</h5>
+              <h5>Corte</h5>
+            </md-slider-container>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/libs/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
